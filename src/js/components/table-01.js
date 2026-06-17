@@ -1,16 +1,16 @@
-
 async function populateDonacionesTable() {
   const tableBody = document.getElementById('donacionesTableBody');
   
   try {
-    const response = await fetch('/api/donaciones');
+    // FIX: Point directly to the microservice port (8084)
+    const response = await fetch('http://localhost:8084/api/donaciones');
+    
     if (!response.ok) throw new Error('Failed to fetch donations');
     
     const data = await response.json();
 
     tableBody.innerHTML = '';
 
-    // 3. Loop through data and create rows
     data.forEach(item => {
       const row = document.createElement('tr');
       row.innerHTML = `
@@ -24,11 +24,10 @@ async function populateDonacionesTable() {
 
   } catch (error) {
     console.error("Error populating table:", error);
-    tableBody.innerHTML = '<tr><td colspan="4" class="text-center py-4">Error loading data</td></tr>';
+    tableBody.innerHTML = '<tr><td colspan="4" class="text-center py-4 text-red-500">Error loading data (Service may be down)</td></tr>';
   }
 }
 
-// Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
   populateDonacionesTable();
 });

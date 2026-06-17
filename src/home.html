@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Donaton - Inicio</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
+  </head>
+  <body
+    x-data="{ page: 'home', darkMode: false }"
+    x-init="
+      darkMode = JSON.parse(localStorage.getItem('darkMode') || 'false');
+      $watch('darkMode', v => localStorage.setItem('darkMode', JSON.stringify(v)))
+    "
+    :class="{'dark bg-gray-900': darkMode === true}"
+    class="min-h-screen font-sans bg-gray-50 dark:bg-gray-900 text-gray-800"
+  >
+    <!-- Navbar -->
+    <header class="bg-white dark:bg-white/[0.03] border-b border-gray-100 dark:border-gray-800">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex items-center gap-4">
+            <a href="home.html" class="text-blue-600 font-bold text-lg">Donaton</a>
+            <nav class="hidden sm:flex gap-3">
+              <a href="home.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Home</a>
+              <a href="donaciones.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Donar</a>
+            </nav>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <a href="login.html" class="inline-flex items-center px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700">
+              Iniciar sesión
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="flex-1">
+      <!-- Hero Banner -->
+      <section class="relative py-20 sm:py-28 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+          <div class="absolute top-20 right-10 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+          <div class="absolute bottom-10 left-10 w-72 h-72 bg-indigo-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse" style="animation-delay: 2s"></div>
+        </div>
+
+        <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <h1 class="text-5xl sm:text-6xl font-black text-gray-900 dark:text-white mb-6 leading-tight">
+              Bienvenido a <span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Donaton</span>
+            </h1>
+            <p class="text-xl sm:text-2xl text-gray-700 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+              La plataforma que conecta tu generosidad con causas que cambian vidas. Dona de forma segura y transparente.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="donaciones.html" class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+                Donar ahora
+              </a>
+              <a href="login.html" class="inline-flex items-center justify-center px-8 py-4 rounded-xl border-2 border-gray-400 dark:border-gray-600 text-gray-800 dark:text-white font-semibold hover:bg-white dark:hover:bg-gray-800 transition-all duration-300">
+                Acceder a mi cuenta
+              </a>
+            </div>
+          </div>
+
+          <!-- Stats -->
+          <div class="grid grid-cols-3 gap-4 sm:gap-8 mt-12 text-center">
+            <div class="bg-white dark:bg-white/5 rounded-lg p-4 sm:p-6 backdrop-blur">
+              <p class="text-3xl sm:text-4xl font-bold text-blue-600 dark:text-blue-400">$2.5M+</p>
+              <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Donaciones recaudadas</p>
+            </div>
+            <div class="bg-white dark:bg-white/5 rounded-lg p-4 sm:p-6 backdrop-blur">
+              <p class="text-3xl sm:text-4xl font-bold text-blue-600 dark:text-blue-400">15K+</p>
+              <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Donantes activos</p>
+            </div>
+            <div class="bg-white dark:bg-white/5 rounded-lg p-4 sm:p-6 backdrop-blur">
+              <p class="text-3xl sm:text-4xl font-bold text-blue-600 dark:text-blue-400">50+</p>
+              <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Causas apoyadas</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section class="py-20 bg-white dark:bg-gray-800/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">¿Por qué elegir Donaton?</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-400">Somos la plataforma más confiable para tus donaciones</p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Feature 1 -->
+            <div class="group cursor-pointer">
+              <div class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-8 group-hover:shadow-2xl transition-all duration-300 transform group-hover:-translate-y-2">
+                <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+                  <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">100% Transparente</h3>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Cada donación es registrada y puedes ver exactamente cómo se utiliza tu aporte en tiempo real.</p>
+              </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="group cursor-pointer">
+              <div class="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl p-8 group-hover:shadow-2xl transition-all duration-300 transform group-hover:-translate-y-2">
+                <div class="w-16 h-16 bg-gradient-to-br from-green-600 to-emerald-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+                  <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Completamente Seguro</h3>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Encriptación de nivel bancario y verificación de identidad para proteger todos tus datos personales.</p>
+              </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="group cursor-pointer">
+              <div class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-8 group-hover:shadow-2xl transition-all duration-300 transform group-hover:-translate-y-2">
+                <div class="w-16 h-16 bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+                  <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M13 7H7v6h6V7z"></path>
+                    <path fill-rule="evenodd" d="M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2V2a1 1 0 112 0v1h1a2 2 0 012 2v1h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v1a2 2 0 01-2 2h-1v1a1 1 0 11-2 0v-1h-2v1a1 1 0 11-2 0v-1H9a2 2 0 01-2-2v-1H6a1 1 0 110-2h1v-2H6a1 1 0 010-2h1V9H6a1 1 0 010-2h1V6H7a2 2 0 01-2-2V3a1 1 0 010-1z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Impacto Inmediato</h3>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Conoce historias reales de cómo tu donación está cambiando vidas hoy mismo en la comunidad.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="py-16 bg-gradient-to-r from-blue-600 to-indigo-600">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">¿Listo para hacer una diferencia?</h2>
+          <p class="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
+            Tu donación, por pequeña que sea, puede cambiar vidas. Únete a miles de personas generosas.
+          </p>
+          <a href="donaciones.html" class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white text-blue-600 font-semibold hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl">
+            Comenzar a donar
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-6 bg-white dark:bg-transparent border-t border-gray-100 dark:border-gray-800">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
+        &copy; <span id="year"></span> Donaton. Todos los derechos reservados.
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

@@ -4,13 +4,20 @@ const chart02 = async () => {
   const chartElement = document.querySelector("#chartTwo");
   if (!chartElement) return;
 
-  // 1. Fetch data from your API
-  let seriesValue = [0]; // Default value
+  // Default value if the fetch fails
+  let seriesValue = [0]; 
+  
   try {
-    const response = await fetch('/api/donaciones/count'); // Adjust endpoint as needed
+    // FIX: Swapped relative path for the explicit microservice URL on port 8084
+    const response = await fetch('http://localhost:8084/api/donaciones/count'); 
+    
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    
     const data = await response.json();
     
     if (data && data.count !== undefined) {
+      // Note: RadialBars usually expect a percentage (0-100). 
+      // If data.count is a raw total (like 10), it will render as 10%.
       seriesValue = [data.count];
     }
   } catch (error) {
@@ -44,7 +51,8 @@ const chart02 = async () => {
             offsetY: 60,
             color: "#1D2939",
             formatter: function (val) {
-              return val + "%";
+              // ApexCharts defaults to formatting raw numbers here if that's what's passed
+              return val.toLocaleString('es-CL'); 
             },
           },
         },
@@ -55,9 +63,8 @@ const chart02 = async () => {
       colors: ["#465FFF"],
     },
     stroke: { lineCap: "round" },
-    labels: ["Progress"],
+    labels: ["Donaciones"],
   };
-
 
   const chartFour = new ApexCharts(chartElement, chartTwoOptions);
   chartFour.render();
